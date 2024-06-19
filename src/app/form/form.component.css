@@ -1,0 +1,38 @@
+.my-form {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .my-form .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  
+  .my-form .card-header {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .my-form .card-header h3 {
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .my-form .form-label {
+    font-weight: bold;
+  }
+  
+  .my-form .form-control {
+    border-radius: 5px;
+  }
+  
+  .my-form .btn-success {
+    background-color: #4CAF50;
+    border: none;
+  }
+  
+  .my-form .btn-success:hover {
+    background-color: #45a049;
+  }
+  
