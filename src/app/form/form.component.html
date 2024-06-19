@@ -10,10 +10,6 @@
             <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="Entrez votre nom" required />
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName" class="form-label">Prénom <span class="text-danger">*</span></label>
-            <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Entrez votre prénom" required />
-          </div>
-          <div class="col-md-6 mb-3">
             <label for="age" class="form-label">Âge <span class="text-danger">*</span></label>
             <input type="number" id="age" formControlName="age" class="form-control" placeholder="Entrez votre âge" required />
           </div>
@@ -23,19 +19,27 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="chronicDisease" class="form-label">Possédez-vous une maladie chronique ?</label>
-            <select id="chronicDisease" formControlName="chronicDisease" class="form-select">
-              <option value="non">Non</option>
-              <option value="oui">Oui</option>
+            <select id="chronicDisease" formControlName="chronicDisease" class="form-select" placeholder="Possédez-vous une maladie chronique ?">
+              <option value="non">Diabète</option>
+              <option value="oui">Hypertension artérielle </option>
+              <option value="non">Maladie cardiaque</option>
+              <option value="oui">Asthme </option>
+              <option value="non">Maladie pulmonaire obstructive chronique (MPOC)</option>
+              <option value="oui">Arthrite </option>
+              <option value="non">Insuffisance rénale chronique</option>
+              <option value="oui">Hépatite chronique </option>
+              <option value="non">Sclérose en plaques</option>
+              <option value="oui">Cancer </option>
             </select>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="mb-3">
             <label for="symptoms" class="form-label">Symptôme <span class="text-danger">*</span></label>
-            <input type="text" id="symptoms" formControlName="symptoms" class="form-control" placeholder="Décrivez vos symptômes" required />
+            <input type="text" id="symptoms" formControlName="symptoms" class="form-control form-control-spacing" placeholder="Décrivez vos symptômes" required />
+            <input type="text" id="symptoms" formControlName="symptoms" class="form-control form-control-spacing" placeholder="Décrivez vos symptômes" required />
+            <input type="text" id="symptoms" formControlName="symptoms" class="form-control form-control-spacing" placeholder="Décrivez vos symptômes" required />
+            <input type="text" id="symptoms" formControlName="symptoms" class="form-control form-control-spacing" placeholder="Décrivez vos symptômes" required />
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="history" class="form-label">Historique</label>
-            <input type="text" id="history" formControlName="history" class="form-control" placeholder="Entrez l'historique médical" />
-          </div>
+            
         </div>
       </div>
       <div class="card-footer text-center">

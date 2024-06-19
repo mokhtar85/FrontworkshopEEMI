@@ -35,4 +35,7 @@
   .my-form .btn-success:hover {
     background-color: #45a049;
   }
+  .form-control-spacing {
+    margin-bottom: 15px; /* Ajustez la valeur pour augmenter ou diminuer l'espace */
+  }
   
