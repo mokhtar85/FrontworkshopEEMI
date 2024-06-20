@@ -1,8 +1,9 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas'
+// form.component.ts
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../service/api.service'; // Importer le service ApiService
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-form',
@@ -11,41 +12,35 @@ import { Component } from '@angular/core';
 })
 export class FormComponent {
   myForm: FormGroup;
+  errorMessage: string | undefined;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      age: ['', Validators.required],
-      weight: ['', Validators.required],
-      chronicDisease: ['non', Validators.required],
+      age: [null, Validators.required],
+      weight: [null, Validators.required],
       symptoms: ['', Validators.required],
-      history: ['']
+      patient_history: [''],
+      chronicDisease: ['']
     });
   }
 
   onSubmit() {
     if (this.myForm.valid) {
       const formData = this.myForm.value;
-      this.generatePDF(formData);
+      this.apiService.runMedicalCrew(formData).subscribe(
+        (response) => {
+          if (response.status === 'success') {
+            // Rediriger vers ReportComponent et transmettre les données via state
+            this.router.navigate(['/report'], { state: { result: response.result } });
+          } else {
+            this.errorMessage = 'Erreur lors de l\'exécution de la requête.';
+          }
+        },
+        (error) => {
+          this.errorMessage = 'Erreur lors de l\'exécution de la requête.';
+        }
+      );
     }
-  }
-
-  generatePDF(formData: any) {
-    const doc = new jsPDF();
-
-    doc.text('Rapport de diagnostic IA', 10, 10);
-    doc.text(`Nom: ${formData.firstName}`, 10, 20);
-    doc.text(`Prénom: ${formData.lastName}`, 10, 30);
-    doc.text(`Âge: ${formData.age}`, 10, 40);
-    doc.text(`Poids: ${formData.weight}`, 10, 50);
-    doc.text(`Maladie chronique: ${formData.chronicDisease}`, 10, 60);
-    doc.text(`Symptômes: ${formData.symptoms}`, 10, 70);
-    doc.text(`Historique: ${formData.history}`, 10, 80);
-
-    doc.save('diagnostic_report.pdf');
-
-    // Navigate to the report component and pass the form data
-    this.router.navigate(['/report'], { state: { formData: formData } });
   }
 }
